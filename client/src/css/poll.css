@@ -1,0 +1,45 @@
+.poll {
+    width: 100%;
+    font-size: .9rem;
+}
+
+.poll .question {
+    color: white;
+    background-color: #4267B2;
+    padding: 10px;
+}
+.poll .option-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+    padding: 10px;
+}
+
+.option {
+    display: flex;
+    flex-flow: row nowrap;
+
+    width: 100%;
+
+    cursor: pointer;
+    background-color: rgb(223, 223, 223);
+    /* border: 2px solid #a8c6ff; */
+}
+
+.option:hover {
+    background-color: #a8c6ff;
+}
+.option:active {
+    color: white;
+    background-color: #4267B2;
+}
+.option > * {
+    width: 100%;
+    padding: 5px;
+}
+
+
+.option .option-title {}
+.option .option-percentage {
+    width: fit-content;
+}

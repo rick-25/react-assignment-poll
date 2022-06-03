@@ -1,0 +1,28 @@
+.user-section {
+
+}
+
+
+.user-card {
+    padding: 50px;
+}
+
+.user-card .container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-card .container .user-name {}
+
+.user-card .container .user-contact {
+    color: grey;
+    font-size: .8rem;
+}
+
+.user-image {
+    width: 150px;
+    object-fit: cover;
+}
