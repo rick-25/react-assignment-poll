@@ -13,8 +13,10 @@ function Poll({ poll, votePoll }) {
             <div className="option-container">
                 {poll.options.map((option =>
                     <div className="option" key={option._id} onClick={e => {
-                        votePoll(option._id);
-                        setIsMarked(true);
+                        if(!isMarked) {
+                            votePoll(option._id);
+                            setIsMarked(true);
+                        }
                     }}>
                         <div className="option-title">{option.title}</div>
                         {isMarked && <div className="option-percentage">{(option.voteCount / poll.totalVotes * 100).toFixed(1)}%</div>}

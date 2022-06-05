@@ -1,10 +1,9 @@
-import React from 'react';
-import PollList from './PollList';
+import React from "react";
+import PollList from "./PollList";
 
+import "../css/user.css";
 
-import '../css/user.css';
-
-function User({ polls }) {
+function User({ polls , votePoll}) {
     return (
         <section className="user-section">
             <div className="user-card">
@@ -22,7 +21,7 @@ function User({ polls }) {
                     </div>
                 </div>
             </div>
-            <PollList polls={polls} title="Your polls" />
+            <PollList polls={polls} title="Your polls" votePoll={votePoll}/>
         </section>
     );
 }

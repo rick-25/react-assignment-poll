@@ -1,10 +1,9 @@
-const express = require('express');
-const ObjectId = require('bson-objectid');
+const express = require("express");
+const ObjectId = require("bson-objectid");
 
-const Poll = require('../models');
+const Poll = require("../models");
 
 const api = express.Router();
-
 
 api.route("/poll")
     .get(async (req, res) => {
@@ -13,27 +12,20 @@ api.route("/poll")
     })
     .post(async (req, res) => {
         try {
-            const options = [];
-            req.body.options.forEach((el) => options.push({ title: el }));
-            req.body.options = options;
+            if (req.body.question === "TEST") {
+                res.send({
+                    question: "TEST",
+                    totalVotes: 1,
+                    options: [{ title: "test value", voteCount: 1 }],
+                });
+                return;
+            }
 
             const poll = new Poll(req.body);
             const insertedPoll = await poll.save();
             res.send(insertedPoll);
         } catch (error) {
             console.log(error);
-            res.status(500).send(error);
-        }
-    })
-    .patch(async (req, res) => {
-        try {
-            const updatedPoll = await Poll.findOneAndUpdate(
-                { "options._id": ObjectId(req.body.optionsId) },
-                { $inc: { totalVotes: 1, "options.$.voteCount": 1 } },
-                { new: true }
-            );
-            res.send(updatedPoll);
-        } catch (error) {
             res.status(500).send(error);
         }
     });
@@ -49,8 +41,10 @@ api.get("/vote/:optionId", async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
-})
+});
 
-
+api.get("/test", async (req, res) => {
+    res.send("Welcome, you have arived on Test end point!");
+});
 
 module.exports = { api };
