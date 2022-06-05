@@ -6,7 +6,8 @@ import "../css/poll.css";
 import Loader from "./Loader";
 
 function Poll({ poll }) {
-    const [isMarked, setIsMarked] = useState(false);
+    
+    const [selectedOptionId, setSelectedOptionId] = useState("");
 
     const queryClient = useQueryClient();
     const { mutate: votePoll, status: pollVoteStatus } = useMutation(
@@ -27,23 +28,28 @@ function Poll({ poll }) {
         <div className="poll">
             <div className="question">{poll.question}</div>
             <div className="option-container">
-                {(poll.loading) ? (
+                {poll.loading ? (
                     <Loader />
                 ) : (
                     poll.options.map((option) => (
                         <div
                             className="option"
                             key={option._id}
+                            style={{
+                                ...(selectedOptionId === option._id && {
+                                    backgroundColor: "#a8c6ff",
+                                }),
+                            }}
                             onClick={(e) => {
-                                if (!isMarked) {
+                                if (selectedOptionId == "") {
                                     votePoll(option._id);
-                                    setIsMarked(true);
+                                    setSelectedOptionId(option._id);
                                     poll.loading = true;
                                 }
                             }}
                         >
                             <div className="option-title">{option.title}</div>
-                            {isMarked && (
+                            {selectedOptionId !== "" && (
                                 <div className="option-percentage">
                                     {(
                                         (option.voteCount / poll.totalVotes) *

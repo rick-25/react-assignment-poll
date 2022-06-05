@@ -69,4 +69,7 @@
     .title {
         display: none;
     }
+    .user-section .title {
+        display: block;
+    }
 }
