@@ -22,6 +22,6 @@ form input:focus {
 
 form input[type='submit'] {
     color: white;
-    background-color: #4267B2;
+    background-color: #1877f2;
     cursor: pointer;
 }

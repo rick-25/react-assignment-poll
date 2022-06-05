@@ -1,6 +1,8 @@
 .title {
+
+    /* position: absolute; */
     color: white;
-    background-color: #4267B2;
+    background-color: #00a400;
 
     font-size: .8rem;
     text-align: center;

@@ -1,18 +1,26 @@
 .poll {
     width: 100%;
     font-size: .9rem;
+
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
+.poll, .option {
+    border-radius: 15px;
+}
 .poll .question {
     color: white;
-    background-color: #4267B2;
-    padding: 10px;
+    background-color: #1877f2;
+    padding: 10px 15px;
+
+    text-align: center;
 }
 .poll .option-container {
     display: flex;
     flex-flow: column nowrap;
-    gap: 5px;
-    padding: 10px;
+    gap: 10px;
+    padding: 20px;
 }
 
 .option {
@@ -20,10 +28,9 @@
     flex-flow: row nowrap;
 
     width: 100%;
-
+    padding: 0 10px;
     cursor: pointer;
     background-color: rgb(223, 223, 223);
-    /* border: 2px solid #a8c6ff; */
 }
 
 .option:hover {
@@ -31,7 +38,7 @@
 }
 .option:active {
     color: white;
-    background-color: #4267B2;
+    background-color: #1877f2;
 }
 .option > * {
     width: 100%;
@@ -39,7 +46,7 @@
 }
 
 
-.option .option-title {}
+
 .option .option-percentage {
     width: fit-content;
 }

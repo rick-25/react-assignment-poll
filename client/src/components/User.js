@@ -28,7 +28,7 @@ function User() {
     );
 
     return (
-        <section className="user-section">
+        <div className="user-section">
             <div className="user-card">
                 <div className="container">
                     <img
@@ -46,7 +46,7 @@ function User() {
             </div>
             <PollForm onSubmit={addPoll} formStatus={pollUpdateStatus} />
             <PollList polls={userPolls} title="Your polls"/>
-        </section>
+        </div>
     );
 }
 

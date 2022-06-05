@@ -1,11 +1,10 @@
-.poll-list {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
+
 
 .poll-list .container {
     display: flex;
     flex-flow: column nowrap;
     padding: 10px;
+    gap: 20px;
 }
 
 .poll-list p {
