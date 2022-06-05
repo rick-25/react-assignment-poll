@@ -1,9 +1,32 @@
 import React from "react";
 import PollList from "./PollList";
+import PollForm from "./PollForm";
+
+import { useState } from "react";
+import { useMutation } from "react-query";
 
 import "../css/user.css";
 
-function User({ polls , votePoll}) {
+function User() {
+    const [userPolls, setUserPolls] = useState([]);
+    const { mutate: addPoll, status: pollUpdateStatus } = useMutation(
+        async (data) => {
+            const response = await fetch("http://localhost:4400/api/poll", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            return response.json();
+        },
+        {
+            onSuccess: (newPoll) => {
+                setUserPolls([newPoll, ...userPolls]);
+            },
+        }
+    );
+
     return (
         <section className="user-section">
             <div className="user-card">
@@ -21,7 +44,8 @@ function User({ polls , votePoll}) {
                     </div>
                 </div>
             </div>
-            <PollList polls={polls} title="Your polls" votePoll={votePoll}/>
+            <PollForm onSubmit={addPoll} formStatus={pollUpdateStatus} />
+            <PollList polls={userPolls} title="Your polls"/>
         </section>
     );
 }

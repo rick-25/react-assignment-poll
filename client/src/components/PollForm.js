@@ -1,11 +1,11 @@
 import React from "react";
-
-import { useForm } from "react-hook-form"; //'react-hook-form'
-
 import "../css/pollform.css";
 
-function PollForm({ onSubmit }) {
-    
+import { useForm } from "react-hook-form"; //'react-hook-form'
+import Loader from "./Loader";
+
+
+function PollForm({ onSubmit , formStatus}) {
     const {
         register,
         handleSubmit,
@@ -13,7 +13,7 @@ function PollForm({ onSubmit }) {
     } = useForm();
 
     return (
-        <div className="post-form">
+        <div className="post-form" id="post-form">
             <form
                 action="/api/poll"
                 method="post"
@@ -45,7 +45,11 @@ function PollForm({ onSubmit }) {
                     placeholder="Enter 4th option"
                     required={true}
                 />
-                <input type="submit" value="Add poll" />
+                {formStatus == 'loading' ? (
+                    <Loader />
+                ) : (
+                    <input type="submit" value="Add poll" />
+                )}
             </form>
         </div>
     );
